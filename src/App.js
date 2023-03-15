@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React , {useState} from "react";
+import Login from "./Component/Login";
+import { Route,Routes } from "react-router-dom";
+import Register from "./Component/Register";
+import { Context } from "./Context";
+
 
 function App() {
+  const [items,setItems] = useState(JSON.parse(localStorage.getItem('users')) ? JSON.parse(localStorage.getItem('users')) : [])
+   const data = {
+    items ,
+    setItems
+   }
+
+   
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Context.Provider value = {data}>
+      <Routes>
+        <Route index element={<Login/>}/>
+        <Route path="register" element={<Register/>}/>
+      </Routes>
+      </Context.Provider>
+   
     </div>
   );
 }
