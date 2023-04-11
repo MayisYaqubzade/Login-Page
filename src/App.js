@@ -18,7 +18,7 @@ function App() {
     <div>
       <Context.Provider value = {data}>
       <Routes>
-        <Route index element={<Login/>}/>
+        <Route path="/" index element={<Login/>}/>
         <Route path="register" element={<Register/>}/>
       </Routes>
       </Context.Provider>

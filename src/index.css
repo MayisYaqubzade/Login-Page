@@ -4,16 +4,14 @@
 
 body{
     background: rgb(29,116,180);
-    background: linear-gradient(110deg, rgba(29,116,180,1) 0%, rgba(205,98,218,1) 100%);
+    background: linear-gradient(271deg, rgba(29,116,180,1) 0%, rgba(205,98,218,1) 100%);
 }
 
 @layer utilities{
-    .hover{
-        border-bottom: 1px solid rgb(205,98,218,1)  ;
-        transition: 2s;
-    }
     .active {
         @apply text-[rgb(205,98,218,1)]
     }
-    
+    .button{
+        @apply bg-opacity-40 text-[rgb(205,98,218,1)]
+    }
 }
