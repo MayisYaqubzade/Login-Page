@@ -24,15 +24,16 @@ const Register = () => {
     const obj = [...items, data];
     localStorage.setItem("users", JSON.stringify(obj));
     setItems((items) => [...items, data]);
-    if (inputRef3.value == "" ||inputRef4.value == "" ||inputRef5.value == "" ||inputRef1.value == "" ||inputRef2.value == "" ) {
+    if (inputRef3.value === "" ||inputRef4.value === "" ||inputRef5.value === "" ||inputRef1.value === "" ||inputRef2.value === "" ) {
       alert("Please fill out all fields");
     }
     else{
       const mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{3})+$/
-      // const passwordformat = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,32}$/
+      const passwordformat = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,32}$/
       if(mailformat.test(inputRef5.current.value)){
-          if(inputRef1.current.value == inputRef2.current.value){
-            if(items.some(d=>d.email == inputRef5.current.value)){
+        if(passwordformat.test(inputRef1.current.value)){
+          if(inputRef1.current.value === inputRef2.current.value){
+            if(items.some(d=>d.email === inputRef5.current.value)){
               alert("You can`t register again with the same email")
             }
             else {
@@ -43,7 +44,10 @@ const Register = () => {
             alert("Repeat password is incorrect")
           }
         }
-      
+        else{
+          alert("Password is weak")
+        }
+      }
       else{
         alert("The mail is wrong")
       }
